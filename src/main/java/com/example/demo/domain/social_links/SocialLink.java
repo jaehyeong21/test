@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "social_links")
 @NoArgsConstructor
 @Getter
-public class Social_links {
+public class SocialLink {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false)
@@ -21,7 +21,7 @@ public class Social_links {
     private String url;
 
     @Builder
-    public Social_links(Long id, String type, String url){
+    public SocialLink(Long id, String type, String url){
         this.id = id;
         this.type = type;
         this.url = url;

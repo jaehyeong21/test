@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Table(name = "experiences")
 @NoArgsConstructor
 @Getter
-public class Experiences {
+public class Experience {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false)
@@ -33,8 +33,8 @@ public class Experiences {
 
 
     @Builder
-    public Experiences(Long id, String company, String title, String position, LocalDateTime from_date,
-                       LocalDateTime to_date, Boolean is_current, String description){
+    public Experience(Long id, String company, String title, String position, LocalDateTime from_date,
+                      LocalDateTime to_date, Boolean is_current, String description){
         this.id = id;
         this.company = company;
         this.title = title;

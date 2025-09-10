@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Table(name = "Educations")
 @NoArgsConstructor
 @Getter
-public class Educations {
+public class Education {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false)
@@ -31,8 +31,8 @@ public class Educations {
     private Boolean is_current;
 
     @Builder
-    public Educations(Long id, String school, String degree, String field, LocalDateTime from_date,
-                      LocalDateTime to_date, Boolean is_current){
+    public Education(Long id, String school, String degree, String field, LocalDateTime from_date,
+                     LocalDateTime to_date, Boolean is_current){
         this.id = id;
         this.school = school;
         this.degree = degree;

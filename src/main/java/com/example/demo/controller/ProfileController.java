@@ -1,7 +1,8 @@
 package com.example.demo.controller;
 
 
-import com.example.demo.domain.profiles.Profiles;
+import com.example.demo.domain.profiles.Profile;
+import com.example.demo.dto.ProfileDetailDto;
 import com.example.demo.dto.ProfileDto;
 import com.example.demo.service.ProfileService;
 import lombok.RequiredArgsConstructor;
@@ -25,7 +26,7 @@ public class ProfileController {
     }
 
     @GetMapping("/{id}")
-    public Profiles getProfile(@PathVariable Long id) {
+    public ProfileDetailDto getProfileById(@PathVariable Long id) {
         return profileService.getProfileById(id);
     }
 }
