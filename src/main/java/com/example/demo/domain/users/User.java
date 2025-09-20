@@ -6,35 +6,35 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
-@Entity // 데이터베이스의 테이블과 매핑
-@Table(name = "users") // 엔티티가 매핑될 실제 DB 테이블 이름 지정
-@NoArgsConstructor // 파라미터가 없는 기본 생성자를 자동 생성
+@Entity
+@Table(name = "users")
+@NoArgsConstructor
 @Getter
 public class User {
-    @Id // 엔티티 기본 키 지정
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // insert 할 때 DB가 알아서 id 값 채워줌
-    @Column(name = "id", updatable = false) // 한번 저장되면 수정 불가능
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", updatable = false)
     private Long id;
     @Column(name = "name")
     private String name;
     @Column(name = "user_id")
-    private String user_id;
+    private String userId;
     @Column(name = "email")
     private String email;
     @Column(name = "password")
     private String password;
     @Column(name = "created_at")
-    private LocalDateTime created_at;
+    private LocalDate createdAt;
 
     @Builder
-    public User(Long id, String name, String user_id, String email, String password, LocalDateTime created_at){
+    public User(Long id, String name, String userId, String email, String password, LocalDate createdAt){
         this.id = id;
         this.name = name;
-        this.user_id = user_id;
+        this.userId = userId;
         this.email = email;
         this.password = password;
-        this.created_at = created_at;
+        this.createdAt = createdAt;
     }
 }

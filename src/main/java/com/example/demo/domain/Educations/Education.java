@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "Educations")
@@ -24,21 +24,21 @@ public class Education {
     @Column(name = "field")
     private String field;
     @Column(name = "from_date")
-    private LocalDateTime from_date;
+    private LocalDate fromDate;
     @Column(name = "to_date")
-    private LocalDateTime to_date;
+    private LocalDate toDate;
     @Column(name = "is_current")
-    private Boolean is_current;
+    private Boolean isCurrent;
 
     @Builder
-    public Education(Long id, String school, String degree, String field, LocalDateTime from_date,
-                     LocalDateTime to_date, Boolean is_current){
+    public Education(Long id, String school, String degree, String field, LocalDate from_date,
+                     LocalDate to_date, Boolean is_current){
         this.id = id;
         this.school = school;
         this.degree = degree;
         this.field = field;
-        this.from_date = from_date;
-        this.to_date = to_date;
-        this.is_current = is_current;
+        this.fromDate = from_date;
+        this.toDate = to_date;
+        this.isCurrent = is_current;
     }
 }

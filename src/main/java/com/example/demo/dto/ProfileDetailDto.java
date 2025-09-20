@@ -20,7 +20,7 @@ public class ProfileDetailDto {
     private String website;
     private String location;
     private List<Skill> skills;
-    private String githubusername;
+    private String githubUsername;
     private String educastions;
     private String experiences;
 }

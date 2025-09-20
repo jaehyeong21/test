@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "experiences")
@@ -23,25 +23,25 @@ public class Experience {
     @Column(name = "position")
     private String position;
     @Column(name = "from_date")
-    private LocalDateTime from_date;
+    private LocalDate fromDate;
     @Column(name = "to_date")
-    private LocalDateTime to_date;
+    private LocalDate toDate;
     @Column(name = "is_current")
-    private Boolean is_current;
+    private Boolean isCurrent;
     @Column(name = "description")
     private String description;
 
 
     @Builder
-    public Experience(Long id, String company, String title, String position, LocalDateTime from_date,
-                      LocalDateTime to_date, Boolean is_current, String description){
+    public Experience(Long id, String company, String title, String position, LocalDate fromDate,
+                      LocalDate toDate, Boolean isCurrent, String description){
         this.id = id;
         this.company = company;
         this.title = title;
         this.position = position;
-        this.from_date = from_date;
-        this.to_date = to_date;
-        this.is_current = is_current;
+        this.fromDate = fromDate;
+        this.toDate = toDate;
+        this.isCurrent = isCurrent;
         this.description = description;
     }
 }

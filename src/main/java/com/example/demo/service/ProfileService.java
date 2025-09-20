@@ -22,7 +22,6 @@ public class ProfileService {
     private final ProfileRepository profileRepository;
     private final UserRepository userRepository;
 
-    // 목록 조회
     @Transactional
     public List<ProfileDto> getProfiles() {
         List<Profile> Profiles = profileRepository.findAll();
@@ -54,7 +53,7 @@ public class ProfileService {
                 .bio(profile.getBio())
                 .company(profile.getCompany())
                 .skills(profile.getSkills())
-                .githubusername(profile.getGithub_username())
+                .githubUsername(profile.getGithubUsername())
                 .build();
         return profileDetailDto;
     }
