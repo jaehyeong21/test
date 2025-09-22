@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDate;
 
@@ -36,5 +37,13 @@ public class User {
         this.email = email;
         this.password = password;
         this.createdAt = createdAt;
+    }
+
+    public void encodePassword(PasswordEncoder encoder){
+        this.password = encoder.encode(this.password);
+    }
+
+    public boolean checkPassword(String rawPassword, PasswordEncoder encoder) {
+        return encoder.matches(rawPassword, this.password);
     }
 }
