@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDate;
@@ -39,11 +40,11 @@ public class User {
         this.createdAt = createdAt;
     }
 
-    public void encodePassword(PasswordEncoder encoder){
-        this.password = encoder.encode(this.password);
+    public void encodePassword(String rawPassword){
+        this.password = BCrypt.hashpw(rawPassword, BCrypt.gensalt());
     }
 
-    public boolean checkPassword(String rawPassword, PasswordEncoder encoder) {
-        return encoder.matches(rawPassword, this.password);
+    public boolean checkPassword(String rawPassword) {
+        return BCrypt.checkpw(rawPassword, this.password);
     }
 }

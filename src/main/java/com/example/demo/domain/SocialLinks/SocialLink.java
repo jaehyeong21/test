@@ -1,4 +1,4 @@
-package com.example.demo.domain.social_links;
+package com.example.demo.domain.SocialLinks;
 
 import jakarta.persistence.*;
 import lombok.Builder;

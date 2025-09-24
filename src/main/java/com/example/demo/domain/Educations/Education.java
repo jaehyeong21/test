@@ -31,14 +31,14 @@ public class Education {
     private Boolean isCurrent;
 
     @Builder
-    public Education(Long id, String school, String degree, String field, LocalDate from_date,
-                     LocalDate to_date, Boolean is_current){
+    public Education(Long id, String school, String degree, String field, LocalDate fromDate,
+                     LocalDate toDate, Boolean isCurrent){
         this.id = id;
         this.school = school;
         this.degree = degree;
         this.field = field;
-        this.fromDate = from_date;
-        this.toDate = to_date;
-        this.isCurrent = is_current;
+        this.fromDate = fromDate;
+        this.toDate = toDate;
+        this.isCurrent = isCurrent;
     }
 }

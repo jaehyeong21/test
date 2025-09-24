@@ -5,7 +5,9 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Setter
 @Entity
 @Table(name = "skills")
 @Getter
@@ -14,7 +16,6 @@ public class Skill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
 
     @ManyToOne
@@ -24,9 +25,5 @@ public class Skill {
     @Builder
     public Skill(String name, Profile profile){
         this.name = name;
-    }
-
-    public void setProfile(Profile profile) {
-        this.profile = profile;
     }
 }

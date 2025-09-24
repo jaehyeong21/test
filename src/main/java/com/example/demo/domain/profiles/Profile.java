@@ -31,13 +31,13 @@ public class Profile {
     private User user;
 
     @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Skill> Skills = new ArrayList<>();
+    private List<Skill> skills = new ArrayList<>();
 
-    @OneToOne
+    @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "education_id")
     private Education education;
 
-    @OneToOne
+    @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "experience_id")
     private Experience experience;
 
@@ -48,11 +48,11 @@ public class Profile {
     private String bio;
 
     @Builder
-    public Profile(Long id, String company, User user, List<Skill> Skills, String githubUsername, String bio){
+    public Profile(Long id, String company, User user, List<Skill> skills, String githubUsername, String bio){
         this.id = id;
         this.company = company;
         this.user = user;
-        this.Skills = Skills;
+        this.skills = skills;
         this.githubUsername = githubUsername;
         this.bio = bio;
     }

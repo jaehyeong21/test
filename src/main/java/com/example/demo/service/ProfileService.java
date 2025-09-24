@@ -7,10 +7,9 @@ import com.example.demo.dto.ProfileDetailDto;
 import com.example.demo.dto.ProfileDto;
 import com.example.demo.repository.ProfileRepository;
 import com.example.demo.repository.UserRepository;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.BadRequestException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,13 +21,13 @@ public class ProfileService {
     private final ProfileRepository profileRepository;
     private final UserRepository userRepository;
 
-    @Transactional
+    @Transactional(readOnly = true)
     public List<ProfileDto> getProfiles() {
-        List<Profile> Profiles = profileRepository.findAll();
-        List<ProfileDto> ProfileDtos = new ArrayList<>();
+        List<Profile> profiles = profileRepository.findAll();
+        List<ProfileDto> profileDtos = new ArrayList<>();
 
-        for (Profile profile : Profiles) {
-            ProfileDtos.add(ProfileDto.builder()
+        for (Profile profile : profiles) {
+            profileDtos.add(ProfileDto.builder()
                     .bio(profile.getBio())
                     .company(profile.getCompany())
                     .skills(profile.getSkills().stream().map(Skill::getName).collect(Collectors.toList()))
@@ -36,10 +35,10 @@ public class ProfileService {
             );
         }
 
-        return ProfileDtos;
+        return profileDtos;
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public ProfileDetailDto getProfileById(final Long userId){
         User user = userRepository.findById(userId).orElseThrow(
                 () -> new RuntimeException("User not found")
