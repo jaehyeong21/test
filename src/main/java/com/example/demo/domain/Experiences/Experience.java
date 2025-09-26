@@ -1,5 +1,6 @@
 package com.example.demo.domain.Experiences;
 
+import com.example.demo.domain.profiles.Profile;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -30,6 +31,9 @@ public class Experience {
     private Boolean isCurrent;
     @Column(name = "description")
     private String description;
+    @ManyToOne
+    @JoinColumn(name = "profile_id")
+    private Profile profile;
 
 
     @Builder

@@ -34,12 +34,10 @@ public class Profile {
     private List<Skill> skills = new ArrayList<>();
 
     @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "education_id")
-    private Education education;
+    private List<Education> educations = new ArrayList<>();
 
     @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "experience_id")
-    private Experience experience;
+    private List<Experience> experiences = new ArrayList<>();
 
     @Column(name = "github_username")
     private String githubUsername;

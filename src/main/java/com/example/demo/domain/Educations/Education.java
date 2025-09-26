@@ -1,6 +1,7 @@
 package com.example.demo.domain.Educations;
 
 
+import com.example.demo.domain.profiles.Profile;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -29,6 +30,9 @@ public class Education {
     private LocalDate toDate;
     @Column(name = "is_current")
     private Boolean isCurrent;
+    @ManyToOne
+    @JoinColumn(name = "profile_id")
+    private Profile profile;
 
     @Builder
     public Education(Long id, String school, String degree, String field, LocalDate fromDate,
