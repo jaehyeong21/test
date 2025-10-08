@@ -25,5 +25,17 @@ public class Skill {
     @Builder
     public Skill(String name, Profile profile){
         this.name = name;
+        this.profile = profile;
+    }
+
+    public void setProfile(Profile profile){
+        if(this.profile != null){
+            this.profile.getSkills().remove(this);
+        }
+        this.profile = profile;
+
+        if(!profile.getSkills().contains(this)){
+            profile.getSkills().add(this);
+        }
     }
 }

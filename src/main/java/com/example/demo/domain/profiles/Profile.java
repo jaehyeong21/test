@@ -54,4 +54,18 @@ public class Profile {
         this.githubUsername = githubUsername;
         this.bio = bio;
     }
+
+    public void addSkill(List<Skill> skills){
+        this.skills = skills;
+        for(Skill skill : skills){
+            this.addSkill(skill);
+        }
+    }
+
+    public void addSkill(Skill skill){
+        if(skill.getProfile() != this){
+            skill.setProfile(this);
+        }
+    }
+
 }

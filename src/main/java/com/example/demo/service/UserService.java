@@ -11,8 +11,6 @@ import com.example.demo.global.security.token.TokenManager;
 import com.example.demo.global.security.token.TokenResponseDto;
 import com.example.demo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.mindrot.jbcrypt.BCrypt;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,8 +27,6 @@ public class UserService {
             throw new DuplicateUserEmailException();
         }
         User user = registerDto.toEntity();
-        String rawPassword = user.getPassword();
-        user.encodePassword(rawPassword);
         userRepository.save(user);
         return toTokenResponseDto(user);
     }

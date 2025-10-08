@@ -18,7 +18,6 @@ class profileRepositoryTest {
 	void testInsertAndSelect() {
 		Profile profile = Profile.builder()
 				.company("Busan Bank")
-				.github_username("jaehyeong-dev")
 				.bio("백엔드 개발자")
 				.build();
 

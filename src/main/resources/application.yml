@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8081
 
 spring:
   datasource:
@@ -14,6 +14,7 @@ spring:
     show-sql: true
     properties:
       hibernate:
+        default_batch_fetch_size : 10
         format_sql: true
 
 jwt:
