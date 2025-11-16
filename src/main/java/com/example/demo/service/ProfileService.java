@@ -54,6 +54,7 @@ public class ProfileService {
                 .skills(profile.getSkills())
                 .githubUsername(profile.getGithubUsername())
                 .build();
+
         return profileDetailDto;
     }
 }

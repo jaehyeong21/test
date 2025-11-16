@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -18,6 +20,7 @@ public class PostService {
 
     private final UserRepository userRepository;
     private final PostRepository postRepository;
+
     @Transactional
     public PostRequestDto createPost(Long userId, PostRequestDto postRequestDto){
         User user = userRepository.findById(userId)
@@ -30,9 +33,25 @@ public class PostService {
                 .createdAt(LocalDate.now())
                 .build();
 
+        user.addPost(post);
         postRepository.save(post);
 
         return postRequestDto;
+    }
 
+    public List<PostRequestDto> getPosts(){
+        List<Post> posts = postRepository.findAll();
+        List<PostRequestDto> postDtos = new ArrayList<>();
+
+        for(Post post : posts) {
+            postDtos.add(PostRequestDto.builder()
+                    .postId(post.getId())
+                    .title(post.getTitle())
+                    .content(post.getContent())
+                    .userId(post.getUser().getUserId())
+                    .build()
+            );
+        }
+        return postDtos;
     }
 }
