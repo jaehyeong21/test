@@ -43,9 +43,8 @@ public class UserService {
     }
 
     private TokenResponseDto toTokenResponseDto(User user) {
-        TokenDto tokenDto = TokenDto.builder()
-                .userId(user.getId())
-                .build();
+
+        TokenDto tokenDto = new TokenDto(user.getId());
         return tokenManager.generateToken(tokenDto);
     }
 }

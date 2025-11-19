@@ -9,7 +9,6 @@ import com.example.demo.repository.CommentRepository;
 import com.example.demo.repository.PostRepository;
 import com.example.demo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -36,8 +35,6 @@ public class CommentService {
                 .post(post)
                 .build();
 
-        post.addComment(comment);
-
         commentRepository.save(comment);
     }
 
@@ -46,20 +43,19 @@ public class CommentService {
                 .orElseThrow(() -> new BadRequestException("존재하지 않는 게시물입니다."));
 
         List<Comment> comments = commentRepository.findAllByPost(post);
-        List<CommentRequestDto> commentDtos = new ArrayList<>();
+        List<CommentRequestDto> commentDto = new ArrayList<>();
 
         for (Comment comment : comments) {
             CommentRequestDto dto = CommentRequestDto.builder()
-                    .id(comment.getId())
                     .content(comment.getContent())
                     .userId(comment.getUser().getUserId())
                     .username(comment.getUser().getName())
                     .build();
 
-            commentDtos.add(dto);
+            commentDto.add(dto);
         }
 
-        return commentDtos;
+        return commentDto;
     }
 
 }

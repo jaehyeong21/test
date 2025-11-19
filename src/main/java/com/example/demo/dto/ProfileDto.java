@@ -1,5 +1,7 @@
 package com.example.demo.dto;
 
+import com.example.demo.domain.Skills.Skill;
+import com.example.demo.domain.users.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -12,8 +14,14 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProfileDto {
+    private String name;
+    private String userId;
     private String bio;
     private String company;
+    private String website;
+    private String githubUsername;
+    private String education;
+    private String experiences;
     private String location;
-    private List<String> skills;
+    private List<Skill> skills;
 }

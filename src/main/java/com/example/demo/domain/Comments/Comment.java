@@ -39,24 +39,9 @@ public class Comment {
     public Comment(String content, User user, Post post) {
         this.content = content;
         this.createdAt = LocalDate.now();
-        setUser(user);
-        setPost(post);
-    }
-
-    public void setPost(Post post){
-        this.post = post;
-
-        if(!post.getComments().contains(this)){
-            post.getComments().add(this);
-        }
-    }
-
-    public void setUser(User user){
         this.user = user;
-
-        if(!user.getComments().contains(this)){
-            user.getComments().add(this);
-        }
+        this.post = post;
     }
+
 
 }

@@ -1,7 +1,5 @@
 package com.example.demo.domain.Posts;
 
-import com.example.demo.domain.Comments.Comment;
-import com.example.demo.domain.Likes.Like;
 import com.example.demo.domain.users.User;
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -10,8 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @Setter
 @Entity
@@ -34,12 +30,6 @@ public class Post {
     @Column(name = "content")
     private String content;
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Like> likes = new ArrayList<>();
-
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Comment> comments = new ArrayList<>();
-
     @Column(name = "created_at")
     private LocalDate createdAt;
 
@@ -52,13 +42,4 @@ public class Post {
         this.createdAt = createdAt;
     }
 
-    public void addComment(Comment comment) {
-        comments.add(comment);
-        comment.setPost(this);
-    }
-
-    public void addLike(Like like){
-        likes.add(like);
-        like.setPost(this);
-    }
 }

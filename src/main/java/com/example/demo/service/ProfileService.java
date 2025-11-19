@@ -30,7 +30,7 @@ public class ProfileService {
             profileDtos.add(ProfileDto.builder()
                     .bio(profile.getBio())
                     .company(profile.getCompany())
-                    .skills(profile.getSkills().stream().map(Skill::getName).collect(Collectors.toList()))
+                    .skills(profile.getSkills())
                     .build()
             );
         }
@@ -39,7 +39,7 @@ public class ProfileService {
     }
 
     @Transactional(readOnly = true)
-    public ProfileDetailDto getProfileById(final Long userId){
+    public ProfileDto getProfileById(final Long userId){
         User user = userRepository.findById(userId).orElseThrow(
                 () -> new RuntimeException("User not found")
         );
@@ -47,14 +47,15 @@ public class ProfileService {
                 () -> new RuntimeException("Not Profile")
         );
 
-        ProfileDetailDto profileDetailDto = ProfileDetailDto.builder()
-                .user(profile.getUser())
+        ProfileDto profileDto = ProfileDto.builder()
+                .name(profile.getUser().getName())
+                .userId(profile.getUser().getUserId())
                 .bio(profile.getBio())
                 .company(profile.getCompany())
                 .skills(profile.getSkills())
                 .githubUsername(profile.getGithubUsername())
                 .build();
 
-        return profileDetailDto;
+        return profileDto;
     }
 }

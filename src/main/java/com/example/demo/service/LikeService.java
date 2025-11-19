@@ -33,9 +33,10 @@ public class LikeService {
             return false;
         }
 
-        Like like = new Like();
-        like.setUser(user);
-        post.addLike(like);
+        Like like = Like.builder()
+                        .user(user)
+                        .post(post)
+                        .build();
 
         likeRepository.save(like);
 

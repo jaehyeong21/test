@@ -6,10 +6,8 @@ import com.example.demo.dto.ProfileDetailDto;
 import com.example.demo.dto.ProfileDto;
 import com.example.demo.service.ProfileService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,8 +24,9 @@ public class ProfileController {
     }
 
     @GetMapping("/{id}")
-    public ProfileDetailDto getProfileById(@PathVariable Long id) {
+    public ProfileDto getProfileById(@PathVariable Long id) {
         return profileService.getProfileById(id);
     }
+
 }
 

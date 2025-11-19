@@ -33,7 +33,6 @@ public class PostService {
                 .createdAt(LocalDate.now())
                 .build();
 
-        user.addPost(post);
         postRepository.save(post);
 
         return postRequestDto;
@@ -45,7 +44,6 @@ public class PostService {
 
         for(Post post : posts) {
             postDtos.add(PostRequestDto.builder()
-                    .postId(post.getId())
                     .title(post.getTitle())
                     .content(post.getContent())
                     .userId(post.getUser().getUserId())
@@ -53,5 +51,13 @@ public class PostService {
             );
         }
         return postDtos;
+    }
+
+    public List<PostRequestDto> getPostsByUser(Long userId) {
+        List<Post> posts = postRepository.findByUserId(userId);
+
+        return posts.stream()
+                .map(PostRequestDto::new)
+                .toList();
     }
 }

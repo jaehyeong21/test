@@ -3,6 +3,7 @@ package com.example.demo.domain.Likes;
 import com.example.demo.domain.Posts.Post;
 import com.example.demo.domain.users.User;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -26,4 +27,11 @@ public class Like {
     @ManyToOne
     @JoinColumn(name = "post_id")
     private Post post;
+
+    @Builder
+    public Like(Long id, User user, Post post){
+        this.id = id;
+        this.user = user;
+        this.post = post;
+    }
 }

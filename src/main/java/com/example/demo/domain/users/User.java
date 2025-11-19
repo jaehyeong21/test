@@ -1,7 +1,5 @@
 package com.example.demo.domain.users;
 
-import com.example.demo.domain.Comments.Comment;
-import com.example.demo.domain.Posts.Post;
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -10,8 +8,6 @@ import lombok.NoArgsConstructor;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -22,18 +18,19 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false)
     private Long id;
+
     @Column(name = "name")
     private String name;
+
     @Column(name = "user_id")
     private String userId;
+
     @Column(name = "email")
     private String email;
+
     @Column(name = "password")
     private String password;
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Post> posts = new ArrayList<>();
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Comment> comments = new ArrayList<>();
+
     @Column(name = "created_at")
     private LocalDate createdAt;
 
@@ -45,11 +42,6 @@ public class User {
         this.email = email;
         this.password = BCrypt.hashpw(password, BCrypt.gensalt());
         this.createdAt = createdAt;
-    }
-
-    public void addPost(Post post){
-        posts.add(post);
-        post.setUser(this);
     }
 
     public void encodePassword(String rawPassword){

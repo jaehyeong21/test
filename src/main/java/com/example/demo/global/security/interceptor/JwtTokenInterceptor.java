@@ -25,7 +25,6 @@ public class JwtTokenInterceptor implements HandlerInterceptor {
             throw new RuntimeException("토큰이 필요합니다");
         }
         tokenManager.validateToken(token);
-        System.out.println("요청 URI = " + request.getRequestURI());
 
         return true;
     }
