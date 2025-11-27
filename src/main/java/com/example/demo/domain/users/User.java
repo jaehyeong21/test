@@ -22,26 +22,23 @@ public class User {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "user_id")
-    private String userId;
-
     @Column(name = "email")
     private String email;
 
     @Column(name = "password")
     private String password;
 
-    @Column(name = "created_at")
-    private LocalDate createdAt;
+    @Column(name = "created_date")
+    private LocalDate createdDate;
+
 
     @Builder
-    public User(Long id, String name, String userId, String email, String password, LocalDate createdAt){
+    public User(Long id, String name, String email, String password, LocalDate createdDate){
         this.id = id;
         this.name = name;
-        this.userId = userId;
         this.email = email;
         this.password = BCrypt.hashpw(password, BCrypt.gensalt());
-        this.createdAt = createdAt;
+        this.createdDate = createdDate;
     }
 
     public void encodePassword(String rawPassword){

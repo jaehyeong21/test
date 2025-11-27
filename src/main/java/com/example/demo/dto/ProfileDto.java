@@ -15,7 +15,6 @@ import java.util.List;
 @NoArgsConstructor
 public class ProfileDto {
     private String name;
-    private String userId;
     private String bio;
     private String company;
     private String website;

@@ -4,6 +4,7 @@ import com.example.demo.domain.Comments.Comment;
 import com.example.demo.domain.Posts.Post;
 import com.example.demo.domain.users.User;
 import com.example.demo.dto.CommentRequestDto;
+import com.example.demo.dto.CommentResponseDto;
 import com.example.demo.global.security.exception.BadRequestException;
 import com.example.demo.repository.CommentRepository;
 import com.example.demo.repository.PostRepository;
@@ -31,25 +32,24 @@ public class CommentService {
 
         Comment comment = Comment.builder()
                 .content(dto.getContent())
-                .user(user)
+                .writer(user)
                 .post(post)
                 .build();
 
         commentRepository.save(comment);
     }
-
-    public List<CommentRequestDto> getComments(Long postId){
+    @Transactional(readOnly = true)
+    public List<CommentResponseDto> getComments(Long postId){
         Post post = postRepository.findById(postId)
                 .orElseThrow(() -> new BadRequestException("존재하지 않는 게시물입니다."));
 
         List<Comment> comments = commentRepository.findAllByPost(post);
-        List<CommentRequestDto> commentDto = new ArrayList<>();
+        List<CommentResponseDto> commentDto = new ArrayList<>();
 
         for (Comment comment : comments) {
-            CommentRequestDto dto = CommentRequestDto.builder()
+            CommentResponseDto dto = CommentResponseDto.builder()
                     .content(comment.getContent())
-                    .userId(comment.getUser().getUserId())
-                    .username(comment.getUser().getName())
+                    .username(comment.getWriter().getName())
                     .build();
 
             commentDto.add(dto);

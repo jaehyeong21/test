@@ -30,16 +30,16 @@ public class Post {
     @Column(name = "content")
     private String content;
 
-    @Column(name = "created_at")
-    private LocalDate createdAt;
+    @Column(name = "created_date")
+    private LocalDate createdDate;
 
     @Builder
-    public Post(Long id, User user, String content, String title, LocalDate createdAt){
+    public Post(Long id, User user, String content, String title, LocalDate createdDate){
         this.id = id;
         this.user = user;
         this.title = title;
         this.content = content;
-        this.createdAt = createdAt;
+        this.createdDate = createdDate;
     }
 
 }

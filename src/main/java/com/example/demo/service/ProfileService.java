@@ -49,7 +49,6 @@ public class ProfileService {
 
         ProfileDto profileDto = ProfileDto.builder()
                 .name(profile.getUser().getName())
-                .userId(profile.getUser().getUserId())
                 .bio(profile.getBio())
                 .company(profile.getCompany())
                 .skills(profile.getSkills())

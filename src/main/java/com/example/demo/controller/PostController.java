@@ -24,7 +24,7 @@ public class PostController {
         return ResponseEntity.ok("게시물 등록 완료");
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public List<PostRequestDto> getPosts(){
         return postService.getPosts();
     }

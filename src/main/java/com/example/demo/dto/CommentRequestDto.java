@@ -9,13 +9,11 @@ import lombok.NoArgsConstructor;
     @NoArgsConstructor
     public class CommentRequestDto {
         private String content;
-        private String userId;
         private String username;
 
         @Builder
-        public CommentRequestDto(String content, String userId, String username){
+        public CommentRequestDto(String content, String username){
             this.content = content;
-            this.userId = userId;
             this.username = username;
         }
 }

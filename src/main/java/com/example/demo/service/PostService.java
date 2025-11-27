@@ -30,7 +30,7 @@ public class PostService {
                 .user(user)
                 .title(postRequestDto.getTitle())
                 .content(postRequestDto.getContent())
-                .createdAt(LocalDate.now())
+                .createdDate(LocalDate.now())
                 .build();
 
         postRepository.save(post);
@@ -38,6 +38,7 @@ public class PostService {
         return postRequestDto;
     }
 
+    @Transactional(readOnly = true)
     public List<PostRequestDto> getPosts(){
         List<Post> posts = postRepository.findAll();
         List<PostRequestDto> postDtos = new ArrayList<>();
@@ -46,7 +47,7 @@ public class PostService {
             postDtos.add(PostRequestDto.builder()
                     .title(post.getTitle())
                     .content(post.getContent())
-                    .userId(post.getUser().getUserId())
+                    .username(post.getUser().getName())
                     .build()
             );
         }

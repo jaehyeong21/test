@@ -27,19 +27,19 @@ public class Comment {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private User writer;
 
     @Column(name = "content")
     private String content;
 
-    @Column(name = "created_at")
-    private LocalDate createdAt;
+    @Column(name = "created_date")
+    private LocalDate createdDate;
 
     @Builder
-    public Comment(String content, User user, Post post) {
+    public Comment(String content, User writer, Post post) {
         this.content = content;
-        this.createdAt = LocalDate.now();
-        this.user = user;
+        this.createdDate = LocalDate.now();
+        this.writer = writer;
         this.post = post;
     }
 

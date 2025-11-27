@@ -13,11 +13,11 @@ import lombok.NoArgsConstructor;
 public class PostRequestDto {
     private String title;
     private String content;
-    private String userId;
+    private String username;
 
     public PostRequestDto(Post post) {
         this.title = post.getTitle();
         this.content = post.getContent();
-        this.userId = post.getUser().getUserId();
+        this.username = post.getUser().getName();
     }
 }

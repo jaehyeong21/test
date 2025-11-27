@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.CommentRequestDto;
+import com.example.demo.dto.CommentResponseDto;
 import com.example.demo.global.security.token.TokenContextHolder;
 import com.example.demo.service.CommentService;
 import lombok.RequiredArgsConstructor;
@@ -16,12 +17,12 @@ public class CommentController {
 
     private final CommentService commentService;
 
-    @GetMapping("/get")
-    public List<CommentRequestDto> getComments(@PathVariable Long postId) {
+    @GetMapping
+    public List<CommentResponseDto> getComments(@PathVariable Long postId) {
         return commentService.getComments(postId);
     }
 
-    @PostMapping("/write")
+    @PostMapping
     public ResponseEntity<?> createComment(@PathVariable Long postId,
                                            @RequestBody CommentRequestDto dto) {
         Long userId = TokenContextHolder.getContext().getUserId();
