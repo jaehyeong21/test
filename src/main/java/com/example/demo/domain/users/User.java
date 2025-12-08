@@ -41,6 +41,12 @@ public class User {
         this.createdDate = createdDate;
     }
 
+    public User(String email, String password) {
+        this.email = email;
+        this.password = BCrypt.hashpw(password, BCrypt.gensalt());
+        this.createdDate = LocalDate.now();
+    }
+
     public void encodePassword(String rawPassword){
         this.password = BCrypt.hashpw(rawPassword, BCrypt.gensalt());
     }

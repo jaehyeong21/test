@@ -7,4 +7,12 @@ import lombok.Setter;
 @Getter
 public class TokenContext {
     private Long userId;
+
+    public TokenContext(Long userId){
+        this.userId = userId;
+    }
+
+    public TokenContext(){
+
+    }
 }
