@@ -1,4 +1,4 @@
-package com.example.demo.domain.Follows;
+package com.example.demo.domain.follows;
 
 import com.example.demo.domain.users.User;
 import jakarta.persistence.*;

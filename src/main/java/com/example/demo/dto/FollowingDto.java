@@ -1,6 +1,6 @@
 package com.example.demo.dto;
 
-import com.example.demo.domain.Follows.Follow;
+import com.example.demo.domain.follows.Follow;
 import lombok.Getter;
 
 @Getter
@@ -11,5 +11,10 @@ public class FollowingDto {
     public FollowingDto(Follow follow){
         this.userId = follow.getFollowing().getId();
         this.userName = follow.getFollowing().getName();
+    }
+
+    public FollowingDto(Long userId, String userName){
+        this.userId = userId;
+        this.userName = userName;
     }
 }
